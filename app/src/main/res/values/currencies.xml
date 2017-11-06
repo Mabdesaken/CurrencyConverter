@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="GPB" type="dimen" format="float">76.18</item>
+    <item name="EUR" type="dimen" format="float">85.90</item>
+    <item name="USD" type="dimen" format="float">100</item>
+    <item name="JPY" type="dimen" format="float">11413.26</item>
+    <item name="AUD" type="dimen" format="float">129.79</item>
+    <item name="CAD" type="dimen" format="float">128.47</item>
+    <item name="CHF" type="dimen" format="float">100.02</item>
+    <item name="BRL" type="dimen" format="float">326.74</item>
+    <item name="DKK" type="dimen" format="float">639.26</item>
+    <item name="RUB" type="dimen" format="float">5842.07</item>
+    <item name="CNY" type="dimen" format="float">661.29</item>
+    <item name="INR" type="dimen" format="float">6460.90</item>
+    <item name="MXN" type="dimen" format="float">1909.57</item>
+</resources>

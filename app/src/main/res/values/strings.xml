@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">CurrencyConverter</string>
+    <string-array name="Currencies">
+        <item>USD</item>
+        <item>EUR</item>
+        <item>GBP</item>
+        <item>JPY</item>
+        <item>AUD</item>
+        <item>CAD</item>
+        <item>CHF</item>
+        <item>BRL</item>
+        <item>DKK</item>
+        <item>RUB</item>
+        <item>CNY</item>
+        <item>INR</item>
+        <item>MXN</item>
+    </string-array>
+
+    <string name="GBRtoUSD">
+        0.65
+    </string>
+</resources>
