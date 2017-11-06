@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import static java.lang.Math.round;
+
 public class MainActivity extends AppCompatActivity {
 
     public void convert(View view) throws NoSuchFieldException, IllegalAccessException {
@@ -23,12 +25,14 @@ public class MainActivity extends AppCompatActivity {
 
         Double euroConvert = readAmount*spinnerCurrencyTo/spinnerCurrencyFrom;
         TextView textView = (TextView) findViewById(R.id.toTextView);
-        textView.setText(euroConvert.toString());
+        String decimal = String.format("%.2f", euroConvert);
+        Log.i("Deci: ", decimal);
+        textView.setText(decimal + " " + getSpinner(R.id.toSpinner));
     }
 
-    public Spinner getSpinner(int spinner){
+    public String getSpinner(int spinner){
         Spinner toSpinner = (Spinner) findViewById(spinner);
-        return toSpinner;
+        return toSpinner.getSelectedItem().toString();
     }
 
     public Double getSpinnerPosition(int spinner){
