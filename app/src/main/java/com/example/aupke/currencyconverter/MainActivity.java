@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
         Double euroConvert = dollarAmount*value;
         TextView textView = (TextView) findViewById(R.id.editText);
-        textView.setText(euroConvert.toString() + " Euro");
+        textView.setText(euroConvert.toString() + "  Euro");
         Log.i("Spinner from ", getSpinner(R.id.toSpinner));
     }
 
