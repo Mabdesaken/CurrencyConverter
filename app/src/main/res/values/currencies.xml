@@ -1,16 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item name="GPB" type="dimen" format="float">76.18</item>
-    <item name="EUR" type="dimen" format="float">85.90</item>
-    <item name="USD" type="dimen" format="float">100</item>
-    <item name="JPY" type="dimen" format="float">11413.26</item>
-    <item name="AUD" type="dimen" format="float">129.79</item>
-    <item name="CAD" type="dimen" format="float">128.47</item>
-    <item name="CHF" type="dimen" format="float">100.02</item>
-    <item name="BRL" type="dimen" format="float">326.74</item>
-    <item name="DKK" type="dimen" format="float">639.26</item>
-    <item name="RUB" type="dimen" format="float">5842.07</item>
-    <item name="CNY" type="dimen" format="float">661.29</item>
-    <item name="INR" type="dimen" format="float">6460.90</item>
-    <item name="MXN" type="dimen" format="float">1909.57</item>
+    <string-array name="currencyInteger">
+        <item>76.18</item>
+        <item>86.90</item>
+        <item>100</item>
+        <item>11413.26</item>
+        <item>129.79</item>
+        <item>128.47</item>
+        <item>100.02</item>
+        <item>326.74</item>
+        <item>639.26</item>
+        <item>5842.07</item>
+        <item>661.29</item>
+        <item>6460.90</item>
+        <item>1910.57</item>
+
+    </string-array>
+        <!--
+        <item name="GPB" format="float" type="dimen">76.18</item>
+        <item name="EUR" format="float" type="dimen">85.90</item>
+        <item name="USD" format="float" type="dimen">100</item>
+        <item name="JPY" format="float" type="dimen">11413.26</item>
+        <item name="AUD" format="float" type="dimen">129.79</item>
+        <item name="CAD" format="float" type="dimen">128.47</item>
+        <item name="CHF" format="float" type="dimen">100.02</item>
+        <item name="BRL" format="float" type="dimen">326.74</item>
+        <item name="DKK" format="float" type="dimen">639.26</item>
+        <item name="RUB" format="float" type="dimen">5842.07</item>
+        <item name="CNY" format="float" type="dimen">661.29</item>
+        <item name="INR" format="float" type="dimen">6460.90</item>
+        <item name="MXN" format="float" type="dimen">1909.57</item>
+        -->
 </resources>
