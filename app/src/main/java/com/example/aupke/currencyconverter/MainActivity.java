@@ -15,9 +15,6 @@ public class MainActivity extends AppCompatActivity {
     public void convert(View view) throws NoSuchFieldException, IllegalAccessException {
         EditText editText = (EditText) findViewById(R.id.editText2);
         Double readAmount = Double.parseDouble(editText.getText().toString());
-
-        String spinnerString = getSpinner(R.id.toSpinner);
-        String spinnerString2 = getSpinner(R.id.spinner);
         Double spinnerCurrencyFrom = getSpinnerPosition(R.id.spinner);
         Double spinnerCurrencyTo = getSpinnerPosition(R.id.toSpinner);
         //resources.getValue(resources.getIdentifier(spinnerString, "dimen", MainActivity.this.getPackageName()), typedValue, true);
@@ -25,29 +22,31 @@ public class MainActivity extends AppCompatActivity {
 
 
         Double euroConvert = readAmount*spinnerCurrencyTo/spinnerCurrencyFrom;
-        TextView textView = (TextView) findViewById(R.id.editText);
+        TextView textView = (TextView) findViewById(R.id.toTextView);
         textView.setText(euroConvert.toString());
-        Log.i("Spinner from ", spinnerString);
-        Log.i("Spinner from ", spinnerString2);
-        Log.i("Second spinner value: ", spinnerCurrencyFrom.toString());
     }
 
-    public String getSpinner(int spinner){
+    public Spinner getSpinner(int spinner){
         Spinner toSpinner = (Spinner) findViewById(spinner);
-        String text = toSpinner.getSelectedItem().toString();
-        return text;
+        return toSpinner;
     }
 
     public Double getSpinnerPosition(int spinner){
         Spinner spinner1 = (Spinner) findViewById(spinner);
         int spinnerPosition = spinner1.getSelectedItemPosition();
         String[] currency_values = getResources().getStringArray(R.array.currencyInteger);
-        double sizeD = Double.valueOf(currency_values[spinnerPosition]);
-        return sizeD;
+        double currency = Double.valueOf(currency_values[spinnerPosition]);
+        return currency;
     }
 
-    public void swap(View view){
+    public void swap(View view) throws NoSuchFieldException, IllegalAccessException {
 
+        Spinner spinner2 = (Spinner) findViewById(R.id.toSpinner);
+        Spinner spinner1 = (Spinner) findViewById(R.id.spinner);
+        int spinner1temporary = spinner1.getSelectedItemPosition();
+        spinner1.setSelection(spinner2.getSelectedItemPosition());
+        spinner2.setSelection(spinner1temporary);
+        convert(view);
     }
 
     @Override
