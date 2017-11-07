@@ -1,10 +1,8 @@
 package com.example.aupke.currencyconverter;
 
-import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -17,8 +15,8 @@ public class MainActivity extends AppCompatActivity {
     public void convert(View view) throws NoSuchFieldException, IllegalAccessException {
         EditText editText = (EditText) findViewById(R.id.editText2);
         Double readAmount = Double.parseDouble(editText.getText().toString());
-        Double spinnerCurrencyFrom = getSpinnerPosition(R.id.spinner);
-        Double spinnerCurrencyTo = getSpinnerPosition(R.id.toSpinner);
+        Double spinnerCurrencyFrom = getSpinnerCurrency(R.id.spinner);
+        Double spinnerCurrencyTo = getSpinnerCurrency(R.id.toSpinner);
         //resources.getValue(resources.getIdentifier(spinnerString, "dimen", MainActivity.this.getPackageName()), typedValue, true);
         //resources.getValue(spin);
 
@@ -32,10 +30,13 @@ public class MainActivity extends AppCompatActivity {
 
     public String getSpinner(int spinner){
         Spinner toSpinner = (Spinner) findViewById(spinner);
-        return toSpinner.getSelectedItem().toString();
+        int spinnerPosition = toSpinner.getSelectedItemPosition();
+        String[] currencyIcons = getResources().getStringArray(R.array.currencyIcon);
+        String icon = String.valueOf(currencyIcons[spinnerPosition]);
+        return icon;
     }
 
-    public Double getSpinnerPosition(int spinner){
+    public Double getSpinnerCurrency(int spinner){
         Spinner spinner1 = (Spinner) findViewById(spinner);
         int spinnerPosition = spinner1.getSelectedItemPosition();
         String[] currency_values = getResources().getStringArray(R.array.currencyInteger);

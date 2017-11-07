@@ -16,7 +16,19 @@
         <item>MXN</item>
     </string-array>
 
-    <string name="GBRtoUSD">
-        0.65
-    </string>
+    <string-array name="currencyIcon">
+        <item>$</item>
+        <item>€</item>
+        <item>£</item>
+        <item>¥</item>
+        <item>$</item>
+        <item>$</item>
+        <item>₣</item>
+        <item>$</item>
+        <item>kr</item>
+        <item>₽</item>
+        <item>¥</item>
+        <item>₹</item>
+        <item>$</item>
+    </string-array>
 </resources>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="currencyInteger">
-        <item>76.18</item>
-        <item>86.90</item>
         <item>100</item>
+        <item>86.90</item>
+        <item>76.18</item>
         <item>11413.26</item>
         <item>129.79</item>
         <item>128.47</item>
@@ -17,9 +17,9 @@
 
     </string-array>
         <!--
-        <item name="GPB" format="float" type="dimen">76.18</item>
-        <item name="EUR" format="float" type="dimen">85.90</item>
         <item name="USD" format="float" type="dimen">100</item>
+        <item name="EUR" format="float" type="dimen">85.90</item>
+        <item name="GBP" format="float" type="dimen">76.18</item>
         <item name="JPY" format="float" type="dimen">11413.26</item>
         <item name="AUD" format="float" type="dimen">129.79</item>
         <item name="CAD" format="float" type="dimen">128.47</item>
