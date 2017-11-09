@@ -25,7 +25,10 @@ public class MainActivity extends AppCompatActivity {
         TextView textView = (TextView) findViewById(R.id.toTextView);
         String decimal = String.format("%.2f", euroConvert);
         Log.i("Deci: ", decimal);
-        textView.setText(decimal + " " + getSpinner(R.id.toSpinner));
+        textView.setText(decimal);
+        TextView textViewTo = (TextView) findViewById(R.id.toTextViewIcon);
+        textViewTo.setText(getSpinner(R.id.toSpinner));
+
     }
 
     public String getSpinner(int spinner){

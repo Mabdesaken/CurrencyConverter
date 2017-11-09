@@ -68,6 +68,15 @@
         android:id="@+id/toTextView"
         android:layout_alignBaseline="@+id/editText2"
         android:layout_alignBottom="@+id/editText2"
-        android:layout_alignStart="@+id/toSpinner" />
+        android:layout_alignStart="@+id/toSpinner"
+        android:layout_toStartOf="@+id/toTextViewIcon" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/toTextViewIcon"
+        android:layout_alignBaseline="@+id/toTextView"
+        android:layout_alignBottom="@+id/toTextView"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>
