@@ -21,11 +21,10 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-        if (savedInstanceState != null && savedInstanceState.containsKey("savedHistory") && savedInstanceState.containsKey("savedCreateCount")) {
+        if (savedInstanceState != null && savedInstanceState.containsKey("savedHistory") && savedInstanceState.containsKey("savedCreateCounter")) {
             // Restore history
-            createCounter = savedInstanceState.getInt("savedCreateCount");
+            createCounter = savedInstanceState.getInt("savedCreateCounter");
             history = savedInstanceState.getStringArrayList("savedHistory");
         } else {
             // Clean slate
@@ -86,9 +85,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         Log.i(TAG, "The activity's state is about to be restored.");
-        if (savedInstanceState != null && savedInstanceState.containsKey("savedHistory") && savedInstanceState.containsKey("savedResumeCount")) {
+        if (savedInstanceState != null && savedInstanceState.containsKey("savedHistory") && savedInstanceState.containsKey("savedResumeCounter")) {
             // Restore history
-            resumeCounter = savedInstanceState.getInt("savedResumeCount");
+            resumeCounter = savedInstanceState.getInt("savedResumeCounter");
             history = savedInstanceState.getStringArrayList("savedHistory");
         }
     }
