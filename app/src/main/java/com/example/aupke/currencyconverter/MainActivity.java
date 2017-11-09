@@ -1,16 +1,82 @@
 package com.example.aupke.currencyconverter;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
+    private ArrayList<String> history;
+    private String TAG = "MainActivity";
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (savedInstanceState != null && savedInstanceState.containsKey("savedHistory")) {
+            // Restore history
+            history = savedInstanceState.getStringArrayList("savedHistory");
+        } else {
+            // Clean slate
+            history = new ArrayList<String>();
+        }
+
+        history = new ArrayList<String>();
+        setContentView(R.layout.activity_main);
+
+        Button convertButton = (Button) findViewById(R.id.button);
+        TextView createAndResume = (TextView)findViewById(R.id.createAndResumeTextView);
+        final TextView toQuery = (TextView)findViewById(R.id.toTextView);
+        final EditText queryEditText = (EditText) findViewById(R.id.editText2);
+        final ListView viewOfHistory = (ListView) findViewById(R.id.historyView);
+        //Now we're going to make the adapter
+        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, history);
+        viewOfHistory.setAdapter(adapter);
+
+        convertButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                try {
+                    convert(v);
+                } catch (NoSuchFieldException e) {
+                    e.printStackTrace();
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }
+
+                String query = queryEditText.getText().toString().trim() + " " + getSpinnerCurrencyText(R.id.spinner) + " = "
+                        + toQuery.getText().toString().trim() + " " + getSpinnerCurrencyText(R.id.toSpinner);
+                if(!query.isEmpty()) {
+                    //we're adding our query to the history now
+                    adapter.add(query);
+                }
+            }
+        });
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        Log.i(TAG, "The activity's state is about to be saved."); outState.putStringArrayList("savedHistory", history);
+    }
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        Log.i(TAG, "The activity's state is about to be restored.");
+        if (savedInstanceState != null && savedInstanceState.containsKey("savedHistory")) {
+            // Restore history
+            history = savedInstanceState.getStringArrayList("savedHistory");
+        }
+    }
 
     public void convert(View view) throws NoSuchFieldException, IllegalAccessException {
         EditText editText = (EditText) findViewById(R.id.editText2);
@@ -27,11 +93,19 @@ public class MainActivity extends AppCompatActivity {
         Log.i("Deci: ", decimal);
         textView.setText(decimal);
         TextView textViewTo = (TextView) findViewById(R.id.toTextViewIcon);
-        textViewTo.setText(getSpinner(R.id.toSpinner));
+        textViewTo.setText(getSpinnerCurrencyIcon(R.id.toSpinner));
 
     }
 
-    public String getSpinner(int spinner){
+    public String getSpinnerCurrencyText(int spinner){
+        Spinner toSpinner = (Spinner)findViewById(spinner);
+        int spinnerPosition = toSpinner.getSelectedItemPosition();
+        String[] currencyText = getResources().getStringArray(R.array.Currencies);
+        String text = String.valueOf(currencyText[spinnerPosition]);
+        return text;
+    }
+
+    public String getSpinnerCurrencyIcon(int spinner){
         Spinner toSpinner = (Spinner) findViewById(spinner);
         int spinnerPosition = toSpinner.getSelectedItemPosition();
         String[] currencyIcons = getResources().getStringArray(R.array.currencyIcon);
@@ -57,18 +131,4 @@ public class MainActivity extends AppCompatActivity {
         convert(view);
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        Button historyListViewButton = (Button)findViewById(R.id.historyButton);
-        historyListViewButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent switchToListView = new Intent(getApplicationContext(), HistoryActivity.class);
-                startActivity(switchToListView);
-            }
-        });
-    }
 }
