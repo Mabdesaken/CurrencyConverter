@@ -34,8 +34,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button convertButton = (Button) findViewById(R.id.button);
-        TextView createAndResume = (TextView)findViewById(R.id.createAndResumeTextView);
-        createAndResume.setText("onCreate: " + createCounter + ", onResume: " + resumeCounter);
+
         final TextView toQuery = (TextView)findViewById(R.id.toTextView);
         final EditText queryEditText = (EditText) findViewById(R.id.editText2);
         final ListView viewOfHistory = (ListView) findViewById(R.id.historyView);
@@ -65,12 +64,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         createCounter++;
+        updateCounters();
     }
 
     @Override
     protected void onResume() {
         resumeCounter++;
         super.onResume();
+        updateCounters();
     }
 
     @Override
@@ -143,6 +144,11 @@ public class MainActivity extends AppCompatActivity {
         spinner1.setSelection(spinner2.getSelectedItemPosition());
         spinner2.setSelection(spinner1temporary);
         convert(view);
+    }
+
+    public void updateCounters(){
+        TextView createAndResume = (TextView)findViewById(R.id.createAndResumeTextView);
+        createAndResume.setText("onCreate: " + createCounter + ", onResume: " + resumeCounter);
     }
 
 }
