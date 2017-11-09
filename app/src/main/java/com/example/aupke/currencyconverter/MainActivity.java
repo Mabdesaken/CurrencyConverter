@@ -16,23 +16,26 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     private ArrayList<String> history;
     private String TAG = "MainActivity";
+    private int createCounter;
+    private int resumeCounter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
-        if (savedInstanceState != null && savedInstanceState.containsKey("savedHistory")) {
+        if (savedInstanceState != null && savedInstanceState.containsKey("savedHistory") && savedInstanceState.containsKey("savedCreateCount")) {
             // Restore history
+            createCounter = savedInstanceState.getInt("savedCreateCount");
             history = savedInstanceState.getStringArrayList("savedHistory");
         } else {
             // Clean slate
             history = new ArrayList<String>();
         }
-
-        history = new ArrayList<String>();
         setContentView(R.layout.activity_main);
 
         Button convertButton = (Button) findViewById(R.id.button);
         TextView createAndResume = (TextView)findViewById(R.id.createAndResumeTextView);
+        createAndResume.setText("onCreate: " + createCounter + ", onResume: " + resumeCounter);
         final TextView toQuery = (TextView)findViewById(R.id.toTextView);
         final EditText queryEditText = (EditText) findViewById(R.id.editText2);
         final ListView viewOfHistory = (ListView) findViewById(R.id.historyView);
@@ -61,19 +64,30 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+        createCounter++;
+    }
+
+    @Override
+    protected void onResume() {
+        resumeCounter++;
+        super.onResume();
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        Log.i(TAG, "The activity's state is about to be saved."); outState.putStringArrayList("savedHistory", history);
+        Log.i(TAG, "The activity's state is about to be saved.");
+        outState.putStringArrayList("savedHistory", history);
+        outState.putInt("savedCreateCounter", createCounter);
+        outState.putInt("savedResumeCounter", resumeCounter);
     }
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         Log.i(TAG, "The activity's state is about to be restored.");
-        if (savedInstanceState != null && savedInstanceState.containsKey("savedHistory")) {
+        if (savedInstanceState != null && savedInstanceState.containsKey("savedHistory") && savedInstanceState.containsKey("savedResumeCount")) {
             // Restore history
+            resumeCounter = savedInstanceState.getInt("savedResumeCount");
             history = savedInstanceState.getStringArrayList("savedHistory");
         }
     }
