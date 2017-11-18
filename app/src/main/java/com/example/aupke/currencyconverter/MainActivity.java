@@ -136,7 +136,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void swap(View view) throws NoSuchFieldException, IllegalAccessException {
-
         Spinner spinner2 = (Spinner) findViewById(R.id.toSpinner);
         Spinner spinner1 = (Spinner) findViewById(R.id.spinner);
         int spinner1temporary = spinner1.getSelectedItemPosition();
